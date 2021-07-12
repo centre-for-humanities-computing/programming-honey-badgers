@@ -14,3 +14,12 @@ contact: kln@cas.au.dk
 ```
 
 Course description [here](https://kursuskatalog.au.dk/da/course/106983/Programming-for-the-Humanities)
+
+## Authors
+Kristoffer L. Nielbo
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+
+## Acknowledgments
