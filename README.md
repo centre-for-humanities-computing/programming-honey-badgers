@@ -1,5 +1,8 @@
 # Programming Honey Badgers #
 
+<!---
+✨ special comments✨
+--->
 
 
 ## Implementations ##
@@ -22,4 +25,4 @@ Kristoffer L. Nielbo
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
-## Acknowledgments
+## Acknowledgment
