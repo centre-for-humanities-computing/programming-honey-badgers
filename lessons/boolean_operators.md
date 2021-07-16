@@ -66,14 +66,18 @@ False
 
 ### Examples
 
+What is the largest number
+
 ```py
 x = 1
 y = 3
 z = 2
 if (x > y) and (x > z):
-    print("x")
+    print("x is larger than y and z")
 elif (y > x) and (y > z):
-    print("y")
+    print("y is larger than x and z")
 else:
-    print("z")
+    print("z is larger than x and y")
 ```
+
+Neural representations of Boolean operators
