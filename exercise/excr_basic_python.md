@@ -17,6 +17,58 @@ age = input()
 print(f'You will be {int(age) + 1} in a year')
 ```
 
+## Check your understanding ##
+
+1: What values do the variables `mass` and `age` have after each of the following statements? Test your answer by executing the lines.
+
+```py
+1 mass = 47.5
+2 age = 122
+3 mass = mass * 2.0
+4 age = age - 20
+```
+
+Answer:
+
+1. `mass` holds a value of 47.5, `age` does not exist
+2. `mass` still holds a value of 47.5, `age` holds a value of 122
+3. `mass` now has a value of 95.0, `age`'s value is still 122
+4. `mass` still has a value of 95.0, `age` now holds 102
+
+2: Sorting Out References. Python allows you to assign multiple values to multiple variables in one line by separating the variables and values with commas. What does the following program print out?
+
+```py
+first, second = 'James', 'Kirk'
+third, fourth = second, first
+print(third, fourth)
+```
+
+Answer:
+
+- `Kirk James`
+
+3: Seeing Data Types. What are the data types of the following variables?
+
+```py
+planet = 'Earth'
+apples = 5
+distance = 10.5
+```
+
+Answer:
+
+```py
+type(planet)
+type(apples)
+type(distance)
+```
+
+```py
+<class 'str'>
+<class 'int'>
+<class 'float'>
+```
+
 ## Practice questions ##
 
 1: Which of the following are operators, and which are values?
