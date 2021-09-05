@@ -31,12 +31,25 @@ print(f'You will be {int(age) + 1} in a year')
 5
 ```
 
+Answer:
+
+- operator
+- value
+- value
+- operator
+- operator
+- operator
+- value
+
 2: Which of the following is a variable, and which is a string?
 
 ```py
 spam
 'spam'
 ```
+
+Answer:
+- `spam` is a variable and `'spam'` is a string
 
 3: Name three data types
 
@@ -74,4 +87,25 @@ spock + 1
 
 8: Why is `spock` a valid variable name and 100 invalid
 
+Answer:
+
+- one word with no spaces
+- only use letters, numbers and underscore
+- cannot begin with number
+
+| Valid | Invalid |
+| --- | --- |
+| snake_case | snake-case |
+| camelBack | camel back |
+| wnumber23 | 23wnumber |
+| _23 | 23 |
+| TOTAL_SUM | TOTAL_$UM |
+| hello | 'hello' |
+
 9: What three functions can be used to get the integer, floating-point numner, string version of a value
+
+Answer:
+
+- `int()`
+- `float()`
+- `str()`
