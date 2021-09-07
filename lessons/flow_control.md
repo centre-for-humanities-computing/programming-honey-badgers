@@ -1,7 +1,7 @@
 # Flow of Control with Python #
 
 ---
-**Control flow**
+__Control flow__
 
 The order in which the individual python statements, expressions and function call are evaluated. Explicit control flow is a feature of imperative progamming languages, like Python, in contrast to declarative programming languages (e.g., SQL). A control statement in Python enable the program to _make a decision_ and follow one execution path instead of another. Control flow ensures that your Python program can follow multiple paths (bifurcate, repeat, bypass), instead of just a linear execution.
 ---
@@ -80,8 +80,9 @@ True
 ```
 
 variable assignment vs. equality test
-    - `==` operator compares two values
-    - `=` operator assigns a value to a variable
+
+* `==` operator compares two values
+* `=` operator assigns a value to a variable
 
 ### Boolean operators ###
 
@@ -142,9 +143,22 @@ True
 False
 ```
 
-### Examples
 
-What is the largest number
+#### Mixing Boolean and Comparison Operators ####
+
+```py
+>>> (0 < 1) and (1 < 2)
+True
+>>> (0 < 1) and (2 < 1)
+False
+>>> (0 == 1) or (1 == 1)
+True
+>>> ()
+```
+
+#### Examples ####
+
+What is the largest number?
 
 ```py
 x = 1
@@ -158,4 +172,169 @@ else:
     print("z is larger than x and y")
 ```
 
+implement XOR (exclusive OR)
 
+```py
+>>> x = 1
+>>> y = 2
+>>> (x == x or y != y) and not (x == x and y != y)
+True
+>>> (x == x or y == y) and not (x == x and y == y)
+False
+```
+
+### Elements of Flow Control ###
+
+* condition is an expression `x > y` in the context of flow control
+* blocks of code are groups of python lines
+  * a block begins with an indentation (PEP8: use four spaces instead of tab)
+  * blocks can be embedded in other blocks
+  * a block end with ińdentation decrease (four spaces/tab pr block)
+
+```py
+
+name = 'Kathryn'
+password = 'voyager'
+
+if name == 'Kathryn':
+    print(f'Hello, {name}')
+    if password == 'voyager':
+        print('Please enter')
+    else:
+        print('Error, please try again')
+```
+
+* this is an example on program execution that starts with a CASE (`name` test) followed by a SELECTION (`if ... else`) flow where the program bifurcates.
+
+### Flow Control Statements ###
+
+#### `if` statement ####
+
+* SELECTION or CASE control flow (initial statement)
+
+Components
+
+* the `if` keyword
+* a condition (evaluates to `True` or `False`)
+* a `:`
+* `if` clause: next line indented (4 spaces) code block
+
+```py
+if name == 'Kathryn':
+    print(f'Hello, {name}.')
+```
+
+#### `else` statement ####
+
+* SELECTION control flow
+
+Components
+
+* the `else` keyword
+* a `:`
+* `else` clause: next line indented (4 spaces) code block
+
+```py
+if name == 'Kathryn':
+    print(f'Hello, {name}.')
+else:
+    print('Hello, who are you?')
+```
+
+#### `elif` statement ####
+
+CASE flow control
+
+Components
+
+* `elif` keyword
+* a condition (evaluates to `True` or `False`)
+* a `:`
+* `elif` clause: next line indented (4 spaces) code block
+
+```py
+if name == 'Kathryn':
+    print(f'Hello, {name}.')
+elif name == 'Seven of Nine':
+    print(f'Hello, {name}, Tertiary Adjunct of Unimatrix Zero O')
+```
+
+* add additional CASEs
+
+```py
+if name == 'Kathryn':
+    print(f'Hello, {name}.')
+elif name == 'Seven of Nine':
+    print(f'Hello, {name}, Tertiary Adjunct of Unimatrix Zero O')
+elif name == 'Kirk':
+    print('You don't belong here')
+```
+
+* close with a SELECTION
+
+```py
+if name == 'Kathryn':
+    print(f'Hello, {name}.')
+elif name == 'Seven of Nine':
+    print(f'Hello, {name}, Tertiary Adjunct of Unimatrix Zero O')
+elif name == 'Kirk':
+    print('You don't belong here')
+else:
+    print('Hello, who are you?')
+```
+
+#### `while` loop statement ####
+
+Components
+
+* the `while` keyword
+* a condition (evaluates to `True` or `False`)
+* a `:`
+* `while` clause: next line indented (4 spaces) code block
+
+Compare `if` to `while`
+
+```py
+>>> if var < 5:
+...     print('foobar')
+...     var = var + 1
+...
+foobar
+```
+
+```py
+>>> var = 0
+>>> while var < 5:
+...     print('foobar')
+...     var = var + 1
+...
+foobar
+foobar
+foobar
+foobar
+foobar
+```
+
+make script and try (annoying) while loop
+
+```py
+name = ''
+while name != 'exit':
+    print('Enter your name')
+    name = input()
+    if name != 'exit':
+        print(f'well hello {name}')
+print('Thank you')
+```
+
+#### `break` statement ####
+
+```py
+while True:
+    print('Enter your name')
+    name = input()
+    if name == 'exit':
+        break
+    print(f'well hello {name}')
+print('Thank you')
+```
