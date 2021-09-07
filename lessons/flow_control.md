@@ -1,9 +1,11 @@
 # Flow of Control with Python #
 
 ---
+
 __Control flow__
 
 The order in which the individual python statements, expressions and function call are evaluated. Explicit control flow is a feature of imperative progamming languages, like Python, in contrast to declarative programming languages (e.g., SQL). A control statement in Python enable the program to _make a decision_ and follow one execution path instead of another. Control flow ensures that your Python program can follow multiple paths (bifurcate, repeat, bypass), instead of just a linear execution.
+
 ---
 
 ## Branching with Boolean Values ##
