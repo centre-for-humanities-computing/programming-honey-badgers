@@ -4,7 +4,7 @@
 
 __Control flow__
 
-The order in which the individual python statements, expressions and function call are evaluated. Explicit control flow is a feature of imperative progamming languages, like Python, in contrast to declarative programming languages (e.g., SQL). A control statement in Python enable the program to _make a decision_ and follow one execution path instead of another. Control flow ensures that your Python program can follow multiple paths (bifurcate, repeat, bypass), instead of just a linear execution.
+The order in which the individual python statement, expression and function call are evaluated. Explicit control flow is a feature of imperative progamming languages, like Python, in contrast to declarative programming languages (e.g., SQL). A control statement in Python enable the program to _make a decision_ and follow one execution path instead of another. Control flow ensures that your Python program can follow multiple paths (bifurcate, repeat, bypass), instead of just a linear execution.
 
 ---
 
@@ -329,7 +329,19 @@ while name != 'exit':
 print('Thank you')
 ```
 
+* caught in infinite loop
+
+```py
+while True:
+    print('in the loop...')
+```
+
+* exit with `Ctrl + c` or `CMD + c`
+
+
 #### `break` statement ####
+
+* use onside loop
 
 ```py
 while True:
@@ -340,3 +352,109 @@ while True:
     print(f'well hello {name}')
 print('Thank you')
 ```
+
+#### `continue` statement ####
+
+* use onside loop
+
+```py
+while True:
+    print('Your name please:')
+    name = input()
+    if name != 'Spock':
+        continue
+    print(f'Hello {name}. What is the password? (It is borg)')
+    password = input()
+    if password == 'borg':
+        print(f'Ok {name}, you are in the clear')
+        break
+```
+
+#### Truety or Falsey values ####
+
+```py
+>>> 0 == False
+True
+>>>  0.0 == False
+True
+```
+
+```py
+>>> test = ''
+>>> if test:
+        print('test successful')
+>>> test = 'something'
+>>> if test:
+        print('test successful')
+test successful
+```
+
+#### `for` loops and `range()` ####
+
+Components
+
+* the `for` keyword
+* a (loop) variable name
+* the `in` keyword
+* a call to the `range()` function with up to three parameters (integers)
+* a `:`
+* `for` clause: next line indented (4 spaces) code block
+
+```py
+>>> print('How are you')
+>>> for i in range(5):
+...     print(f'good * {i}')
+good * 0
+good * 1
+good * 2
+good * 3
+good * 4
+```
+
+NB: remember that `break` and `continue` statements can be used inside loops
+
+* summing consecutive values
+
+```py
+total_sum = 0
+for num in range(101):
+    total_sum = total_sum + num
+print(total_sum)
+
+5050
+```
+
+* implement consecutive sum with `while` statement
+
+```py
+total_sum = 0
+num = 0
+while num < 101:
+    total_sum = total_sum + num
+    num = num + 1 
+print(total_sum)
+```
+
+##### Parameters of `range()` #####
+
+* `range()` is inclusive in the beginning, but exclusive in the end
+
+```py
+for i in range(12, 18, 2):
+    print(i)
+12
+14
+16
+```
+
+* backwards
+
+```py
+for i in range(3, -1, -1):
+    print(i)
+3
+2
+1
+0
+```
+
