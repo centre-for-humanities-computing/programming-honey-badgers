@@ -292,6 +292,8 @@ spam.bacon()
 
 15. Look up the `round()` and `abs()` functions on the internet, and find out what they do. Test them in the interactive shell.
 
+Answer:
+
 ```py
 help(round)
 
@@ -313,6 +315,8 @@ abs(x, /)
 ```
 
 16. Using `abs`, write some conditions that print `True` if the variable a is within 10\% of the variable b and `False` otherwise. Compare your implementation with your partner's: do you get the same answer for all possible pairs of numbers?
+
+Answer:
 
 ```py
 a = 5
