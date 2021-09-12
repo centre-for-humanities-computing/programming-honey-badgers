@@ -1,36 +1,44 @@
-# CSV files and JSON data
 
-Der er ikke læst korrektur på det her :-P
+# CSV files and JSON data #
+
+CSV and JSON are data formats you most likely will encounter when doing data analysis.
+
+* CSV data (**C**omma **S**eparated **Va**lues) is widely used for tabular data. You might have seen it when working with a spreadsheet in Microsoft Excel. CSV files *only* contain text in tabular form (rows and columns).
+
+* JSON data (**J**ava**S**cript **O**bject **N**) is widely used for web applications and for communicating with servers. JSON data is structured in a nested hierarchy structured in kay-value pairs.
+
+This lesson will cover how to work with CSV files and JSON data in Python.
+
+We will use the libraries: `csv`, `json` and `pandas` for reading, writing and analysing data.
+
+Furthermore, we will make use of `urlopen` from `urllib.request` for accessing JSON data from a Web API.
 
 
-some intro about the different data structures and why it is important.
-JSON allows complexity and different types.
+In the end of the lesson there is a coding exercise/challenge. Building on a horoscope progam, the exercise can be used as practice for accessing one type of data and store it in a different format.
 
-2 hours of horoscope challenge  + short presentations about what they have done.
 
-Bygning 1481: 264
 
 ## CSV files
 
-A CSV file is a plain text file, meaning that they contain letters and numbers. CSV stands for 'comma-separated values' indicating that our data is separated by commas, structuring our data in tabular form.
+A CSV file is a plain text file. CSV stands for 'comma-separated values' indicating that our data is separated by commas, structuring our data in tabular form.
 Each line in the file represents a row in a table and the commas indicate the division into cells.
 
-You might have worked with tables and spreadsheets in Microsoft Excel. You can read a CSV-file into Excel but the file itself lacks some of the information you will get from Excel, e.g., value types (everything is a string in a CSV-format). However, with CSV files we gain *simplicity*!
+You might have worked with tables and spreadsheets in Microsoft Excel. You can read a CSV file into Excel but the file itself lacks some of the information you will get from Excel, e.g., value types (everything is a string in a CSV format). However, with CSV files we gain *simplicity*!
 
-Opening a CSV file in a text editor (such as TextEdit) you will see something like figure A. When opening the same CSV file in Excel, Excel add som formatting to the dates. You will see something like figure B.
+Opening a CSV file in a text editor (such as TextEdit) you will see something like figure A. When opening the same CSV file in Excel, Excel adds some formatting to the dates. You will see something like figure B.
 
 <center>
 <table>
 <tr>
-<td> <img src="Images/csv_inTextEditor.png" alt="Drawing" style="width: 250px;"/>
+<td> <img src="csv_inTextEditor.png" alt="Drawing" style="width: 250px;"/>
 A</td>
-<td> <img src="Images/csv_inExcel.png" alt="Drawing" style="width: 250px;"/> B</td>
+<td> <img src="csv_inExcel.png" alt="Drawing" style="width: 250px;"/> B</td>
 </tr></table>
 </center>
 
 
-As a string can contain commas within it, CSV files also have escape characters to distinguish between these and those making a boundaries between two cells.
-In Python there exists a `csv` module for reading and writing tabular data in CSV format.
+As a string can contain commas within it, CSV files also have escape characters to distinguish between these and those making a boundary between two cells.
+In Python, there exists a `csv` module for reading and writing tabular data in CSV format.
 
 ### CVS Reader
 To read data from a CSV file we first need to create a `reader` object.
@@ -39,9 +47,10 @@ The `reader` object will iterate over the lines in the given CSV file.
 ```
 import csv
 
-zodiacFile =  open('zodiac.csv')
-reader = csv.reader(zodiacFile)
-zodiacData = list(reader)
+path = "data/zodiac_dates.csv"
+with open(path) as zodiacFile:
+    reader = csv.reader(zodiacFile)
+    zodiacData = list(reader)
 zodiacData
 
 >>>
@@ -72,35 +81,11 @@ zodiacData[7][2]
 
 **Remember**: The computer counts from 0!
 
-### Read files with for loop
-For larger files we want to use the reader in a `for` loop.
+### DictReader
 
-```
-import csv
+From what is printed above we see that the first column contains the name of the zodiac sign, the second the start date, and the third column the end date. This information can be passed to our `reader` obejct and used to access the columns. To do this we use `DictReader` and `DictWriter`.
 
-zodiacFile =  open('zodiac.csv')
-reader = csv.reader(zodiacFile)
-for row in reader:
-    print(str(row))
-
->>>
-
-['Pisces', '19-02', '20-03']
-['Aries', '21-03', '19-04']
-['Taurus', '20-4', '20-05']
-['Gemini', '21-5', '20-6']
-['Cancer', '21-06', '22-07']
-['Leo', '23-07', '22-08']
-['Virgo', '23-08', '22-09']
-['Libra', '23-09', '22-10']
-['Scorpio', '23-10', '21-11']
-['Sagittarius', '22-11', '21-12']
-
-```
-
-From what is printed above we see that the first column contains the name of the zodiac sign, the second the start date and the third column the end date. This information can be added into a header row of our CSV file. To do this we use `DictReader` and `DictWriter`.
-
-Instead of read and write a CSV file as lists, as the `reader` and `writer` objects, `DictReader` and `DictWriter` use dictionaries instead. The first row of the CSV file is used as the keys of the dictionaries.
+Instead of reading and writing a CSV file as lists, as the `reader` and `writer` objects, `DictReader` and `DictWriter` use dictionaries instead. The first row of the CSV file is used as the keys of the dictionaries.
 
 ```
 import csv
@@ -126,37 +111,33 @@ Sagittarius 22-11 21-12
 
 
 ### CSV Writer
-A sharp astrology enthusiast will notice that our data set does not contain data on aquarius and capricorn. To add this we need a `writer` object to write to our CSV file.
+A sharp astrology enthusiast will notice that our data set does not contain data on Aquarius and Capricorn. To add this we need a `writer` object to write to our CSV file.
 
 ```
-import csv
-restOfZodiacFile = open('restOfZodiacFile.csv', 'w', newline='')
-outputWriter = csv.writer(restOfZodiacFile)
-outputWriter.writerow(['Capricorn', 22-12, 19-01])
-outputWriter.writerow(['Aquarius', 20-01, 18-02])
+with open(path + 'restOfZodiacFile2.csv', 'w', newline='') as restOfZodiacFile:
+    outputWriter = csv.writer(restOfZodiacFile)
+    outputWriter.writerow(['Capricorn', '22-12', '19-01'])
+    outputWriter.writerow(['Aquarius', '20-01', '18-02'])
 
 >>>
 
 22
 ```
 
-The `writerow()`method takes a list as argument. The list will be a row in the outputted CSV file and each value in the list is placed in a cell.
-The `writerow()`method returns and integer which tell us how many characters have been written to our file.
+The `writerow()`method takes a list as an argument. The list will be a row in the outputted CSV file and each value in the list is placed in a cell.
 
-However, this have added the data about aquarius and capricorn in a separate file. If we want to add it to the existing file we need to pass our `zodiacFile` to the `writer` object open for appending - note the `a+` in the following code example.
+
+However, this has added the data about Aquarius and Capricorn in a separate file. If we want to add it to the existing file we need to pass our `zodiacFile` to the `writer` object open for appending - note the `a+` in the following code example.
 We use `DictWriter` to add the headers in the first row:
 
 ```
 import csv
 
-allZodiacFile = open('zodiac.csv', 'a+', newline='')
-outputWriter = csv.DictWriter(allZodiacFile,fieldnames = ['Zodiac Sign', 'Start Date', 'End Date'])
-outputWriter.writerow({'Zodiac Sign': 'Capricorn', 'Start Date': '22-12', 'End Date':'19-01'})
-outputWriter.writerow({'Zodiac Sign': 'Aquarius', 'Start Date': '20-01', 'End Date':'18-02'})
+with open(path+'zodaic_dates.csv', 'a+', newline = '') as newfile:
+    output_writer = csv.writer(newfile)
+    output_writer.writerow(['Capricorn', '22-10', '19-01'])
+    output_writer.writerow(['Aquarius', '20-01', '18-02'])
 
->>>
-
-22
 ```
 
 Our CSV file ```zodiac.csv``` now contains data on all the zodiac signs:
@@ -181,16 +162,16 @@ Aquarius,20-01,18-02
 ## pandas
 Additional to the `csv` module there are multiple other Python libraries for reading and writing to data sets as well as doing data analysis.
 
-`pandas` is a common used library used for working with data sets. It has powerful built-in functions for analysing, cleaning, exploring, and manipulating data.
+`pandas` is a commonly used library used for working with data sets. It has powerful built-in functions for analysing, cleaning, exploring, and manipulating data.
 
 ### Series
 
-`pandas` series is a one dimensional array which can hold any type of data (contrary to our CSV-files which only contain string values)
+`pandas` series is a one-dimensional array that can hold any type of data (contrary to our CSV files which only contain string values)
 
 ```
 import pandas as pd
 
-list = ['aries', 'leo', 'virgo', 2]
+list_a = ['aries', 'leo', 'virgo', 2]
 var = pd.Series(list)
 print(var)
 
@@ -246,13 +227,39 @@ Name: 1, dtype: object
 ```
 
 ### Load data sets
-We can use ```pandas``` to read CSV-files. We add the headers to the `DataFrame` otherwise will `pandas` treat the first row  of our data set (`Pisces  19-02  20-03`) as the header.:
+We can use ```pandas``` to read CSV files.
+
+```
+df = pd.read_csv(path+'zodiac_dates.csv')
+
+print(df.to_string())
+
+>>>
+
+Pisces  19-02  20-03
+0         Aries  21-03  19-04
+1        Taurus   20-4  20-05
+2        Gemini   21-5   20-6
+3        Cancer  21-06  22-07
+4           Leo  23-07  22-08
+5         Virgo  23-08  22-09
+6         Libra  23-09  22-10
+7       Scorpio  23-10  21-11
+8   Sagittarius  22-11  21-12
+9     Capricorn  22-12  19-01
+10     Aquarius  20-01  18-02
+11    Capricorn  22-12  19-01
+12     Aquarius  20-01  18-02
+13    Capricorn  22-12  19-01
+14     Aquarius  20-01  18-02
+```
+
+We add the headers to the `DataFrame` otherwise will `pandas` treat the first row  of our data set (`Pisces  19-02  20-03`) as the header.:
 
 ```
 import pandas as pd
 
 df = pd.read_csv('zodiac.csv', names = ['Zodiac Sign', 'Start Date', 'End Date'])
-
 print(df.to_string())
 
 >>>
@@ -272,14 +279,14 @@ print(df.to_string())
 11     Aquarius      20-01    18-02
 ```
 
-The `to_string()` method prints out the entire data frame. If we work on a big data set and wnat to get an idea of how the data set looks like, we can print the first five rows with the `head()` methods and the last five rows with the `tail()` method.
+The `to_string()` method prints out the entire data frame. If we work on a big data set and want to get an idea of how the data set looks like, we can print the first five rows with the `head()` methods and the last five rows with the `tail()` method.
 
-In the example below, the values in the CSV file is not separated by a comma but by a `|`. We pass this information to our `pandas read_csv` object with: `sep='|'`.
+In the example below, the values in the CSV file are not separated by a comma but by a `|`. We pass this information to our `pandas read_csv` object with: `sep='|'`.
 
 ```
 import pandas as pd
 
-df = pd.read_csv('horoscopes_NYtimes_2013-2016.csv', sep='|')
+df = pd.read_csv('horoscopes.csv', sep='|')
 df.columns = ['number', 'horoscope', 'date', 'zodiac sign']
 df.head()
 
@@ -292,11 +299,48 @@ df.head()
 4 	     4 	 A friend or colleague you have not seen for a ... 	12-05-2013 	aries
 ```
 
+
+
+### pd.to_datetime()
+In our data set, dates are given as a string. We can change this with `pandas`'s `todatetime()` method:
+
+```
+print("Type in original dataframe: ")
+print(type(df.loc[0][2]))
+
+df['date'] = pd.to_datetime(df['date'])
+print("Type after 'to date time' update: ")
+print(type(df.loc[0][2]))
+df.head()
+```
+
+
+### Group by
+We can also group our data by and count how many entries we have pr group
+```
+grouped_df = df.groupby("zodiac sign")["date"].count()
+grouped_df
+>>>
+
+zodiac sign
+aquarius       1078
+aries          1076
+cancer         1074
+capricorn      1079
+gemini         1083
+leo            1085
+libra          1082
+pisces         1081
+sagittarius    1080
+scorpio        1084
+taurus         1080
+virgo          1079
+Name: date, dtype: int64
+```
 ### Cleaning Data
 A useful feature of the `pandas` library is the way we can clean data and handle missing data.
 
-If there are empty cells in a data set our data analysis might be wrong. With the method `dropna()` we remove all rows which contains empty cells. When working with big data sets it is usually OK to remove a few rows.
-
+If there are empty cells in a data set our data analysis might be wrong. With the method `dropna()` we remove all rows which contain empty cells. When working with big data sets it is usually OK to remove a few rows.
 ```
 import pandas as pd
 
@@ -331,17 +375,33 @@ new_df = df.fillna(130, inplace = True)
 
 ## JSON Data
 
+Another format used for exchanging data is JSON. It is a lightweight standard for exchanging structured data.
 
-Data sets can be stored as JSON and is often used when sending and receiving data from servers. A JSON file plain text file, but has the format of an object.
+Data sets can be stored as JSON and are often used when sending and receiving data from servers. A JSON file plain text file, but has the format of an *object*.
 
-JSON stands for **J**ava**S**cript **O**bject **N**otation and was originally developed for JavaScript. However, JSON files is saved as plain text, so we do not need to learn/write any JavaScript to in order to work with JSON data.
+JSON data is text-based - meaning that we can (learn to) read them in a normal text editor - even though they might look rather cryptic at first sight.
+
+JSON stands for **J**ava**S**cript **O**bject **N**otation and was originally developed for JavaScript. However, JSON files are saved as plain text, so we do not need to learn/write any JavaScript in order to work with JSON data.
+
 
 Many websites and APIs use JSON format for their data. It is therefore highly useful to learn to work with JSON data.
 
-If you open a JSON file in a text editor, like TextEdit, you will something like this:
+If you open a JSON file in a text editor, like TextEdit, you will see something like this:
 
 
-![JSON file opened in TextEdit](Images/JSON_inTextEdit.png =500x)
+![JSON file opened in TextEdit](JSON_inTextEdit.png =500x)
+
+The grammar of JSON:
+
+| Syntax       | **Datatype**     |
+| :----------- | :----------: |
+|  { and } | contain an object  |
+| [ and ]   | contain elements of an array |
+| :         | separates a key from a value in an object |
+| ,         | separates the elements in an array |
+| " ... "   | contain a string |
+| e.g. 4    | integers |
+| true, false, null | literals |
 
 
 ### Import JSON Data with pandas
@@ -352,7 +412,7 @@ If you open a JSON file in a text editor, like TextEdit, you will something like
 ```
 import pandas as pd
 
-df = pd.read_json('horoscopes.json')
+df = pd.read_json('horoscopes.JSON')
 
 print(df.head())
 
@@ -389,52 +449,71 @@ a work/life balance that supports all your needs.
 
 The webpage [http://ohmanda.com/api/horoscope/](http://ohmanda.com/api/horoscope/) offers daily horoscopes in JSON format. Here is a small code example which receives JSON data on the daily horoscope for aquarius:
 ```
-url = "https://ohmanda.com/api/horoscope/aquarius/"
+import json
+from urllib.request import urlopen
 
-response = urlopen(url)
-data_json = json.loads(response.read())
-df = pd.json_normalize(data_json)
-print(df)
+def getTodaysHoroscope(url_to_api):
+    response = urlopen(url_to_api)
+    data_json = json.loads(response.read())
+    return data_json
 
+url = "http://ohmanda.com/api/horoscope/leo"
+receivedJOSONdata = getTodaysHoroscope(url)
+df = pd.json_normalize(receivedJOSONdata)
+df.loc[0][2]
 >>>
 
-    sign        date                       horoscope
-0  aquarius  2021-08-20  It seems as if the universe has supplied you w...
+    sign 	date 	horoscope
+0 	leo 	2021-09-02 	Keep a watchful eye on the reality of your fin...
 
 ```
 
-## Horoscope Challange
+## Horoscope Challenge
 
-Write a program which gives you today's horoscope!
+Write a program that gives you today's horoscope!
+
+Start writing your "recipe" for what your program should do.
+Add the Python commands afterward.
+
+
 
 ### Ideas
-1. Write a program which receives today's horoscope for your zodiac sign.
-Access the horoscope string and save it in a text file.
+
+
+1. Write a program that receives today's horoscope for *your* zodiac sign.
+Access the horoscope string. Count Words in the horoscope text.
+
+
+2. Save it in a text file.
 
 
 - Hint:
 ```
 # save a txt-file
 outputfile = open('outputfile.text', 'w')
-n = outputfile.write("text you want to output)
+n = outputfile.write("text you want to output")
 outputfile.close()
 ```
 
 
-2. Let the program take a user input which is one of the 12 zodiac signs. Your program should return the daily horoscope of the inputted zodiac sign and save it in a text file.
+
+3. Let the program take a user input which is one of the 12 zodiac signs. Your program should return the daily horoscope of the inputted zodiac sign and save it in a text file.
 
 - Hint:
 ```
 userInput = input("[Message to user]")
 
 ```
-3. Write a program that receives JSON data on the daily horoscopes for all the zodiac signs and save it in a CSV-file.
+
+4. Write a program that receives JSON data on the daily horoscopes for all the zodiac signs and save it in a CSV file.
 
 * Hint: Use `for` loops.
 
-4. Let the user input birth date, find the matching zodiac sign and return today's horoscope.
 
-* Hint: The dates for the zodaic signs can be found in the file `zodiac_dates.csv`.
+5. Is your program robust? Or does it crash if the user input something which is not a zodiac sign?
 
-5. Is your programme robust? Or does it crash if the user input something which is not a zodiac sign?
+6. What is the sentiment of the horoscopes?
+* Hint: Featuring Jan!
+
+
 .
