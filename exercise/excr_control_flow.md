@@ -1,15 +1,112 @@
 # Exercises: Control Flow #
 
-Solve the following 'pair programming', 'Check your understanding', and 'practice questions' in groups of two or four.
+Solve the following 'Pair programming', 'Check your understanding', and 'Practice questions' challenges in groups of two or four.
 
 ## Pair programming ##
 
-create magic eight-ball without function
+Conting vowels:
 
-make truth tables for NOT, AND, OR, XOR
+1. Write a loop that counts the number of vowels in a character string.
+2. Test it on a few individual words and full sentences.
+3. Once you are done, compare your solution to your neighbor pair's. Did you make the same decisions about how to handle the letter ‘y’ (which some people think is a vowel, and some do not)?
 
+Answer:
+
+```py
+vowels = 'aeiouAEIOU'
+sentence = 'Mary had a little lamb.'
+count = 0
+for char in sentence:
+    if char in vowels:
+        count += 1
+
+print(f'The number of vowels in this string is {count}')
+```
 
 ## Check your understanding ##
+
+1. How many paths: Consider this code
+
+```py
+if 4 > 5:
+    print('A')
+elif 4 == 5:
+    print('B')
+elif 4 < 5:
+    print('C')
+```
+
+Which of the following would be printed if you were to run this code? Why did you pick this answer?
+
+* A
+* B
+* C
+* B and C
+
+Answer:
+
+* C
+
+2. What Is Truth? 
+
+`True` and `False` booleans are not the only values in Python that are true and false. In fact, any value can be used in an `if` or `elif`. After reading and running the code below, explain what the rule is for which values are considered true and which are considered false.
+
+```py
+if '':
+    print('empty string is true')
+if 'word':
+    print('word is true')
+if []:
+    print('empty list is true')
+if [1, 2, 3]:
+    print('non-empty list is true')
+if 0:
+    print('zero is true')
+if 1:
+    print('one is true')
+```
+
+Answer:
+
+a truthy value is a value that is considered true when encountered in a Boolean context, and a falsy (sometimes falsey) is a value that is considered false in a Boolean context
+
+* empty strings are 'falsy' which means they are considered false in a Boolean context, so you can just use `not` string
+* non-empty strings are 'truthy' which means they are considered true in a Boolean context
+* empty lists are 'falsy' which means they are considered false in a Boolean context, so you can just use `not` list
+* non-empty lists are 'truthy' which means they are considered true in a Boolean context
+* 0 is 'falsy'
+* 1 is 'truthy'
+
+3. That’s Not Not What I Meant:
+
+Sometimes it is useful to check whether some condition is `not` true. The Boolean operator `not` can do this explicitly. After reading and running the code below, write some if statements that use `not` to test the rule that you formulated in the previous challenge.
+
+```py
+if not '':
+    print('empty string is not true')
+if not 'word':
+    print('word is not true')
+if not not True:
+    print('not not True is true')
+```
+
+Answer:
+
+```py
+if not '':
+    print('empty string is falsy')
+if not not 'word':
+    print('word is true')
+if not []:
+    print('empty list is falsy')
+if [1, 2, 3]:
+    print('non-empty list is true')
+if not 0:
+    print('zero is falsy')
+if 1:
+    print('one is true')
+```
+
 
 ## Practice questions ##
 
@@ -214,3 +311,20 @@ Help on built-in function abs in module builtins:
 abs(x, /)
     Return the absolute value of the argument.
 ```
+
+16. Using `abs`, write some conditions that print `True` if the variable a is within 10\% of the variable b and `False` otherwise. Compare your implementation with your partner's: do you get the same answer for all possible pairs of numbers?
+
+```py
+a = 5
+b = 5.1
+
+if abs(a - b) <= 0.1 * abs(b):
+    print('True')
+else:
+    print('False')
+```
+
+```py
+print(abs(a - b) <= 0.1 * abs(b))
+```
+
