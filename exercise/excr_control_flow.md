@@ -197,6 +197,10 @@ Answer:
 
 Answer:
 
+(two interpretations)
+
+a) an expression in the context of control flow, e.g., `x > y`
+
 Decision making in program execution. A conditional statement perform different computations or actions depending on whether a specific Boolean constraint evaluates to `True` or `False`. Conditional statements are handled by `if` statements in Python.
 
 
