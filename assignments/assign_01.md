@@ -1,6 +1,8 @@
 # Programming for the Humanities: Assignment 1 #
 
+Assigment 1 tests your understanding of basic python syntax, components of flow control and procedural programming with functions. 
 
+---
 
 * 
 * please explain the code execution line by line in your implementation
