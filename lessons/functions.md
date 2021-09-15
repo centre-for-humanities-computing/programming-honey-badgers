@@ -318,7 +318,7 @@ print(divide_by(0))
 print(divide_by(1))
 ```
 
-```py
+```sh
 7.666666666666667
 4.6
 Traceback (most recent call last):
@@ -344,4 +344,12 @@ print(divide_by(3))
 print(divide_by(5))
 print(divide_by(0))
 print(divide_by(1))
+```
+
+```sh
+7.666666666666667
+4.6
+[ERROR] Invalid Argument...
+None
+23.0
 ```
