@@ -191,6 +191,7 @@ SyntaxError: positional argument follows keyword argument
 * one global scope (your program), a local scope is created whenever a function is called. When the function reaches its return statement, its scope stops
 
 Impact of scope
+
 * code in global scope cannot use local variables
 * code in local scope can access global variables
 * code in a function's local scipe cannot use variables in any other local scope
@@ -198,8 +199,149 @@ Impact of scope
 
 ```py
 def hello(name = None):
-    print(f'Hello {name}')
+    print(f'Hello {name}')# name has local scope
+
+name = 'Kathryn'# global scope
+hello(name = name)
+```
+
+Python has four scopes, built-in (not in example code), global, enclosing (for embedded functions), and local
+
+
+```py
+x = 'Global Scope'
+print(x)
+
+def outer_func():
+    x = 'Enclosing scope'
+    print(x)
+
+    def inner_func():
+        x = 'Local scope'
+        print(x)
+
+    inner_func()
+    print(x)
+
+outer_func()
+print(x)
+```
+
+### Local variables are NOT in global scope ###
+
+```py
+def hello():
+    name = 'Kathryn'
+hello()
+print(name)
+```
+
+will give you a `NameError`, why? Because `name` is only in local scope
+
+### Local variables are only local to one context ###
+
+```py
+def hello():
+    name = 'Kathryn'
+    nuqneH()
+    print(name)
+
+def nuqneH():
+    name = 'Worf'
+
+hello()
+```
+
+### Global variables are in the scope of local variables ###
+
+```py
+def hello():
+    print(name)
 
 name = 'Kathryn'
-hello(name = name)
+hello()
+print(name)
+```
+
+### local and global variable can have same name ###
+
+```py
+def hello():
+    name = 'Kathryn'
+    print(f'{name} local')     # local scope
+
+def nuqneH():
+    name = 'Worf'
+    print(f'{name} local')
+    hello()
+    print(f'{name} local')
+
+name = 'Picard'
+nuqneH()
+print(f'{name} global')
+```
+
+## `global` statment ##
+
+* allows you to modify a global variable locally
+
+```py
+def hello():
+    global name
+    name = 'Kathryn'
+
+name = 'Worf'
+hello()
+print(name)
+```
+
+Four scope rules
+
+1. a variable used in global scope is always a global variable
+2. with a global statement in a function, a variable becomes global
+3. if a variable is used in an assignment statement in the function, it is a local variable
+4. if not used in an assignment statement, it is a global variable 
+
+## Exception handling ##
+
+To avoid that your program crashes due to an error/exception, you need to detact and handle errors - _exception handling_
+
+`zero_divide.py`
+
+```py
+def divide_by(denominator):
+    return 23 / denominator
+
+print(divide_by(3))
+print(divide_by(5))
+print(divide_by(0))
+print(divide_by(1))
+```
+
+```py
+7.666666666666667
+4.6
+Traceback (most recent call last):
+  File "script.py", line 6, in <module>
+    print(divide_by(0))
+  File "script.py", line 2, in divide_by
+    return 23 / denominator
+ZeroDivisionError: division by zero
+```
+
+Dividing by zeros results in a program-breaking error
+
+Use `try-except` clauses to catch exceptions
+
+```py
+def divide_by(denominator):
+    try:
+     return 23 / denominator
+    except ZeroDivisionError:
+        print('[ERROR] Invalid Argument... ')
+
+print(divide_by(3))
+print(divide_by(5))
+print(divide_by(0))
+print(divide_by(1))
 ```
