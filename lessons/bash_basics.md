@@ -4,6 +4,18 @@
 * Kernel/OS: programs that allocate system resources
   * shell is used to communicate with the kernel (terminal is CLI interpreter)
 
+Bash is the GNU Project's shell—the Bourne Again SHell. This is an sh-compatible shell that incorporates useful features from the Korn shell (ksh) and the C shell (csh). It is intended to conform to the IEEE POSIX P1003.2/ISO 9945.2 Shell and Tools standard. It offers functional improvements over sh for both programming and interactive use. In addition, most sh scripts can be run by Bash without modification.
+
+The improvements offered by Bash include:
+
+* command-line editing,
+* unlimited size command history,
+* job control,
+* shell functions and aliases,
+* indexed arrays of unlimited size,
+* integer arithmetic in any base from two to sixty-four.
+
+
 
 * Prompt, check calendar
 ```sh
@@ -20,7 +32,7 @@ Su Mo Tu We Th Fr Sa
 * list directories and files, all data are organized into files, all files into directories, directories are organized into a tree-like structure, _the filesystem_
 
 ```sh
-$ ks -l
+$ ls -l
 total 36
 drwxrwxr-x 2 knielbo knielbo 4096 Jul 12 12:34 dat
 drwxrwxr-x 2 knielbo knielbo 4096 Jul 27 15:28 docs
@@ -114,7 +126,7 @@ src/conway_game_of_life.py  src/modular_prog.py    src/tictactoe.py
 
 * files that start with a dot `.` are used to store configuration information
     - `.profile`, bourne shell (sh) initialization script
-    - `.kshrc, Korn shell (ksh)  initialization script
+    - `.kshrc`, Korn shell (ksh)  initialization script
     - `.cshrc`, C shell (csh)  initialization script
     - `.rhosts`, the remote shell configuration file
 * hidden file are shown with ´-a´ flag
@@ -244,7 +256,7 @@ $ pwd
 ```sh
 /home/knielbo/CENTRAL/education/programming-honey-badgers
 ```
-* a pathname can be relative to the current working directory. ***Relative* pathnames never begin with `/`. 
+* a pathname can be relative to the current working directory. *Relative* pathnames never begin with `/`. 
 
 ```sh
 programming-honey-badgers/src
