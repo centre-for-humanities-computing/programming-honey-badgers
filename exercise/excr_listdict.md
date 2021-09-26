@@ -49,9 +49,10 @@ print(flat_fridge)
 
 ## Check your understanding ##
 
+---
+
 ## Practice questions ##
 
-1. What is `[]`?
 
 <br /> 
 
@@ -60,13 +61,80 @@ print(flat_fridge)
 <details>
   <summary> What is `[]`?</summary>
 
-An empty `list`. In Python square brackets are used to open and close a list object.
+1. An empty `list`. In Python square brackets are used to open and close a list object.
+
+</details>
+
+
+<br /> 
+
+</details>
+
+<details>
+  <summary> 2. How would you assign the value 'hello' as the third value in a list stored in a variable named `spam`? (Assume `spam` contains `[2, 4, 6, 8, 10]`.)</summary>
+
+`spam[2] = 'hello'` 
+
+</details>
+
+
+3. For the following three questions, let’s say `spam` contains the list `['a', 'b', 'c', 'd']`.
+
+<br /> 
+
+</details>
+
+<details>
+  <summary> 3.1. What does `spam[int(int('3' * 2)` // 11)] evaluate to?</summary>
+
+'d'
+
+</details>
+
+<br /> 
+
+</details>
+
+<details>
+  <summary> 3.2. What does spam[-1] evaluate to? </summary>
+
+'d'
+
+</details>
+
+<br /> 
+
+</details>
+
+<details>
+  <summary> 3.3.What does spam[:2] evaluate to? </summary>
+
+['a', 'b']
 
 </details>
 
 
 
-2. How would you assign the value 'hello' as the third value in a list storedin a variable named spam? (Assume spam contains `[2, 4, 6, 8, 10]`.)
+
+
+
+---
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 3. For the following three questions, let’s say `spam` contains the list `['a', 'b', 'c', 'd']`.
     * What does spam[int(int('3' * 2) // 11)] evaluate to?
     * What does spam[-1] evaluate to?
