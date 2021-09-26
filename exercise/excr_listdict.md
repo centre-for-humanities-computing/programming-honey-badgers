@@ -87,6 +87,8 @@ Write a script that maps keys onto values in dictionaries nested in a list such 
 ```
 </summary>
 
+_Answer_
+
 ```py
 value_list = ['Spock', 25 , 'TPol', 23 ]
 key_list = ['name', 'age']
