@@ -1,5 +1,78 @@
 # Exercises for Functions Lesson #
 
+
+</details>
+
+<br /> 
+
+</details>
+
+<details>
+
+<summary> 
+
+Take the following nested list 
+
+```py
+>>> fridge = [['pepper', 'zucchini', 'onion'],
+     ['cabbage', 'lettuce', 'garlic'],
+     ['apple', 'pear', 'banana']]
+```
+
+and create a function that returns a _flat list_:
+
+```py
+['pepper', 'zucchini', 'onion', 'cabbage', 'lettuce', 'garlic', 'apple', 'pear', 'banana']
+```
+
+</summary>
+
+```py
+def flatten(lst):
+    """
+    Flatten list
+
+    Input:
+        - lst, a nested list (one level of nesting only)
+    """
+    flat_list = list()
+    for sublst in lst:
+        for item in sublst:
+            flat_list.append(item)
+    
+    return flat_list
+
+# OR with a list comprehension
+
+def flatten(lst):
+    return [item for sublst in lst for item in sublst]
+
+
+fridge = [['pepper', 'zucchini', 'onion'],
+     ['cabbage', 'lettuce', 'garlic'],
+     ['apple', 'pear', 'banana']]
+
+flat_fridge = flatten(fridge)
+print(flat_fridge)
+```
+
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## Pair programming ##
 
 Take the following nested list 
@@ -59,9 +132,9 @@ print(flat_fridge)
 </details>
 
 <details>
-  <summary> What is []?</summary>
+  <summary> 1. What is []?</summary>
 
-1. An empty `list`. In Python square brackets are used to open and close a list object.
+An empty `list`. In Python square brackets are used to open and close a list object.
 
 </details>
 
@@ -302,20 +375,4 @@ shallow copy (`copy()`): will create new and independent object with same conten
 deep copy (`deepcopy()`): creates a new object and recursively adds the copies of nested objects present in the original elements.
 
 </details>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
