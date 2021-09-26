@@ -63,6 +63,45 @@ print(flat_fridge)
 
 ## Check your understanding ##
 
+
+</details>
+
+<br /> 
+
+</details>
+
+<details>
+<summary>
+
+Take the following two lists as input
+
+```py
+value_list = ['Spock', 25 , 'TPol', 23 ]
+key_list = ['name', 'age']
+```
+
+Write a script that maps keys onto values in dictionaries nested in a list such that it outputs
+
+```py
+[{'name': 'Spock', 'age': 25 }, {'name': 'TPol', 'age': 23}]
+```
+</summary>
+
+```py
+value_list = ['Spock', 25 , 'TPol', 23 ]
+key_list = ['name', 'age']
+
+n = len(value_list)
+result = []
+for i in range(0, n, 2):
+    result.append({key_list[0]: value_list[i], key_list[1]: value_list[i+1]})
+
+print(result)
+```
+
+</details>
+
+
 ---
 
 ## Practice questions ##
