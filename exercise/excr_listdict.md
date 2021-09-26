@@ -80,6 +80,7 @@ print(flat_fridge)
 
 3. For the following three questions, let’s say `spam` contains the list `['a', 'b', 'c', 'd']`.
 
+
 <br /> 
 
 </details>
@@ -87,9 +88,10 @@ print(flat_fridge)
 <details>
   <summary> 3.1. What does `spam[int(int('3' * 2)` // 11)] evaluate to?</summary>
 
-'d'
+`'d'`
 
 </details>
+
 
 <br /> 
 
@@ -98,9 +100,10 @@ print(flat_fridge)
 <details>
   <summary> 3.2. What does spam[-1] evaluate to? </summary>
 
-'d'
+`'d'`
 
 </details>
+
 
 <br /> 
 
@@ -109,13 +112,54 @@ print(flat_fridge)
 <details>
   <summary> 3.3.What does spam[:2] evaluate to? </summary>
 
-['a', 'b']
+`['a', 'b']`
 
 </details>
 
 
+4. For the following three questions, let’s say `ham` contains the list
+`[3.14, 'cat', 11, 'cat', True]`.
+
+</details>
 
 
+<br /> 
+
+</details>
+
+<details>
+  <summary> 4.1 What does `ham.index('cat')` evaluate to? </summary>
+
+`1`, The `index()` method returns the first index of the specified element in the list. Use optional `start` and `end` parameters in `list.index(element, start, end)` to search from and up to specific index.
+
+</details>
+
+
+</details>
+
+<br /> 
+
+</details>
+
+<details>
+  <summary> 4.2. What does `ham.append(99)` make the list value in `ham` look like? </summary>
+
+`[3.14, 'cat', 11, 'cat', True, 99]`, the `.append()` method adds a single item to the existing list. It doesn't return a new list of items but will modify the original list by adding the item to the end of the list.
+
+</details>
+
+</details>
+
+<br /> 
+
+</details>
+
+<details>
+  <summary> 4.3. What does `ham.remove('cat')` make the list value in `ham` look like? </summary>
+
+`[3.14, 11, 'cat', True]`, the `remove()` method takes a single element as an argument and removes it from the list. If the element doesn't exist, it throws `ValueError`.
+
+</details>
 
 
 ---
@@ -132,18 +176,6 @@ print(flat_fridge)
 
 
 
-
-
-
-3. For the following three questions, let’s say `spam` contains the list `['a', 'b', 'c', 'd']`.
-    * What does spam[int(int('3' * 2) // 11)] evaluate to?
-    * What does spam[-1] evaluate to?
-    * What does spam[:2] evaluate to?
-4. For the following three questions, let’s say `ham` contains the list
-`[3.14, 'cat', 11, 'cat', True]`.
-    * What does `bacon.index('cat')` evaluate to?
-    * What does `bacon.append(99)` make the list value in bacon look like?
-    * What does bacon.remove('cat') make the list value in bacon look like?
 5. What are the operators for list concatenation and list replication?
 6. What is the difference between the append() and insert() list methods?
 7. What are two ways to remove values from a list?
