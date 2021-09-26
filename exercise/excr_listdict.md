@@ -317,3 +317,112 @@ deep copy (`deepcopy()`): creates a new object and recursively adds the copies o
 
 </details>
 
+
+</details>
+
+<br /> 
+
+</details>
+
+<details>
+  <summary> 14. What does the code for an empty dictionary look like? </summary>
+
+`{}`
+
+</details>
+
+
+</details>
+
+<br /> 
+
+</details>
+
+<details>
+  <summary> 15. What does a dictionary value with a key 'foo' and a value 42 look like? </summary>
+
+`{'foo': 42}`
+
+</details>
+
+
+</details>
+
+<br /> 
+
+</details>
+
+<details>
+  <summary> 16. What is the main difference between a dictionary and a list?
+ </summary>
+
+Both are collections, but the `list` data type is an ordered sequence of elements, while the `dict` data type is an unordered set. The `dict` elements therefore are accessed via keys, while the 'list' elements via position (index).  
+
+</details>
+
+
+</details>
+
+<br /> 
+
+</details>
+
+<details>
+  <summary> 17. What happens if you try to access spam['foo'] if spam is {'bar': 100}?
+ </summary>
+
+The Python interpreter returns a `KeyError`
+
+</details>
+
+
+</details>
+
+<br /> 
+
+</details>
+
+<details>
+  <summary> 18. If a dictionary is stored in spam, what is the difference between the expressions 'cat' in spam and 'cat' in spam.keys()?
+ </summary>
+
+They are equivalent in Python 3, they both the the existence of a key in dictionary, but the pattern `key in dict` is (historically) more correct.
+
+</details>
+
+
+</details>
+
+<br /> 
+
+</details>
+
+<details>
+<summary> 
+19. What is a shortcut for the following code? 
+
+```py
+if 'color' not in spam:
+    spam['color'] = 'black'
+```
+</summary>
+
+use the `setdefault(key, value)` method, `spam.setdefault('color', 'black')`
+
+</details>
+
+
+</details>
+
+<br /> 
+
+</details>
+
+<details>
+  <summary> What module and function can be used to 'pretty print'
+dictionary values?
+ </summary>
+
+`pprint`
+
+</details>
