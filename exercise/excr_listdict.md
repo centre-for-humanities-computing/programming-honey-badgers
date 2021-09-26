@@ -419,7 +419,7 @@ use the `setdefault(key, value)` method, `spam.setdefault('color', 'black')`
 </details>
 
 <details>
-  <summary> What module and function can be used to 'pretty print'
+  <summary> 20. What module and function can be used to 'pretty print'
 dictionary values?
  </summary>
 
