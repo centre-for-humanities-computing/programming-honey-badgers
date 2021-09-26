@@ -73,7 +73,7 @@ print(flat_fridge)
 <details>
 <summary>
 
-Take the following two lists as input
+1. Take the following two lists as input
 
 ```py
 value_list = ['Spock', 25 , 'TPol', 23 ]
@@ -103,6 +103,32 @@ print(result)
 
 </details>
 
+
+</details>
+
+<br /> 
+
+</details>
+
+<details>
+<summary> `+` usually means addition, but when used on strings or lists, it means 'concatenate'. Given that, what do you think the multiplication operator `*` does on lists? In particular, what will be the output of the following code? 
+  
+```py
+counts = [2, 4, 6, 8, 10]
+repeats = counts * 2
+print(repeats)
+```
+
+* `[2, 4, 6, 8, 10, 2, 4, 6, 8, 10]`
+* `[4, 8, 12, 16, 20]`
+* `[[2, 4, 6, 8, 10],[2, 4, 6, 8, 10]]`
+* `[2, 4, 6, 8, 10, 4, 8, 12, 16, 20]`
+
+</summary>
+
+* `[2, 4, 6, 8, 10, 2, 4, 6, 8, 10]`
+
+</details>
 
 ---
 
