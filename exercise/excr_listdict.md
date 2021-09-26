@@ -1,5 +1,6 @@
 # Exercises for Functions Lesson #
 
+## Pair programming ##
 
 </details>
 
@@ -27,6 +28,8 @@ and create a function that returns a _flat list_:
 
 </summary>
 
+_Answer_
+
 ```py
 def flatten(lst):
     """
@@ -57,68 +60,6 @@ print(flat_fridge)
 ```
 
 </details>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-## Pair programming ##
-
-Take the following nested list 
-
-```py
->>> fridge = [['pepper', 'zucchini', 'onion'],
-     ['cabbage', 'lettuce', 'garlic'],
-     ['apple', 'pear', 'banana']]
-```
-
-and create a function that returns a _flat list_:
-
-```py
-['pepper', 'zucchini', 'onion', 'cabbage', 'lettuce', 'garlic', 'apple', 'pear', 'banana']
-```
-
-Answer:
-
-```py
-def flatten(lst):
-    """
-    Flatten list
-
-    Input:
-        - lst, a nested list (one level of nesting only)
-    """
-    flat_list = list()
-    for sublst in lst:
-        for item in sublst:
-            flat_list.append(item)
-    
-    return flat_list
-
-# OR with a list comprehension
-
-def flatten(lst):
-    return [item for sublst in lst for item in sublst]
-
-
-fridge = [['pepper', 'zucchini', 'onion'],
-     ['cabbage', 'lettuce', 'garlic'],
-     ['apple', 'pear', 'banana']]
-
-flat_fridge = flatten(fridge)
-print(flat_fridge)
-```
 
 ## Check your understanding ##
 
