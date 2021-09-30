@@ -88,7 +88,7 @@ def difference(lst1, lst2):
 
 ## Problem 2: TF-IDF Weighting ##
 
-Compare top 100 most frequent words in all horoscopes based on word counts and TF-IDF weighting of the term frequencies, what seems to be the most striking differences and how can you explain them. YOu can use wordclouds or set functions from Problem 1 for the comparison (or any other comparison you may prefer)?
+Compare top 100 most frequent words in all horoscopes based on word counts and TF-IDF weighting of the term frequencies, what seems to be the most striking differences, how can you explain them, what happens if you apply a stopword list? Y0u can use wordclouds or set functions from Problem 1 for the comparison (or any other comparison you may prefer)?
 
 ## Problem 3: Sign-specific indexing ##
 
