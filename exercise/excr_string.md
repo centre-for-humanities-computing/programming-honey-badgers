@@ -21,7 +21,7 @@ What pair of text is most similar and why?
 </details>
 
 <details>
-  <summary> Answer </summary>
+  <summary> [Answer] </summary>
 
 ```py
 from scipy import spatial
