@@ -14,7 +14,7 @@ We will use the libraries: `csv`, `json` and `pandas` for reading, writing and a
 Furthermore, we will make use of `urlopen` from `urllib.request` for accessing JSON data from a Web API.
 
 
-In the end of the lesson there is a coding exercise/challenge. Building on a horoscope progam, the exercise can be used as practice for accessing one type of data and store it in a different format.
+In the end of the lesson there is a coding exercise/challenge. Building on a horoscope program, the exercise can be used as practice for accessing one type of data and store it in a different format.
 
 
 
