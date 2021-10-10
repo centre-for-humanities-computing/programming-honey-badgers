@@ -157,7 +157,23 @@ Capricorn,22-12,19-01
 Aquarius,20-01,18-02
 ```
 
+### Deletion of rows
+(this is only a maybe part as it is quite cumbersome to do it with out the pandas library. But to show it might be a good transition to the pandas part)
 
+```
+def delete_row(path_to_file, path_to_new_file):
+    with open(path_to_file) as wrongfile, open(path_to_new_file, 'w') as correctFile:
+        writer = csv.writer(correctFile)
+        reader = csv.reader(wrongfile)
+        for i, row in enumerate(reader):
+            if i != 12 and i != 13:
+                writer.writerow(row)
+
+                
+path = "data/zodiac.csv"
+new_path = "data/zodiac_updated.csv"
+delete_row(path, new_path)
+```
 
 ## pandas
 Additional to the `csv` module there are multiple other Python libraries for reading and writing to data sets as well as doing data analysis.
@@ -172,7 +188,7 @@ Additional to the `csv` module there are multiple other Python libraries for rea
 import pandas as pd
 
 list_a = ['aries', 'leo', 'virgo', 2]
-var = pd.Series(list)
+var = pd.Series(list_a)
 print(var)
 
 >>>
@@ -457,7 +473,7 @@ def getTodaysHoroscope(url_to_api):
     data_json = json.loads(response.read())
     return data_json
 
-url = "http://ohmanda.com/api/horoscope/leo"
+url = "http://horoscope-api.herokuapp.com/horoscope/today/Libra"
 receivedJOSONdata = getTodaysHoroscope(url)
 df = pd.json_normalize(receivedJOSONdata)
 df.loc[0][2]
@@ -473,11 +489,11 @@ df.loc[0][2]
 Write a program that gives you today's horoscope!
 
 Start writing your "recipe" for what your program should do.
-Add the Python commands afterward.
+Add the Python commands _afterwards_.
 
 
 
-### Ideas
+### Steps
 
 
 1. Write a program that receives today's horoscope for *your* zodiac sign.
@@ -512,8 +528,7 @@ userInput = input("[Message to user]")
 
 5. Is your program robust? Or does it crash if the user input something which is not a zodiac sign?
 
-6. What is the sentiment of the horoscopes?
-* Hint: Featuring Jan!
+
 
 
 .
