@@ -25,17 +25,6 @@ Each line in the file represents a row in a table and the commas indicate the di
 
 You might have worked with tables and spreadsheets in Microsoft Excel. You can read a CSV file into Excel but the file itself lacks some of the information you will get from Excel, e.g., value types (everything is a string in a CSV format). However, with CSV files we gain *simplicity*!
 
-Opening a CSV file in a text editor (such as TextEdit) you will see something like figure A. When opening the same CSV file in Excel, Excel adds some formatting to the dates. You will see something like figure B.
-
-<center>
-<table>
-<tr>
-<td> <img src="csv_inTextEditor.png" alt="Drawing" style="width: 250px;"/>
-A</td>
-<td> <img src="csv_inExcel.png" alt="Drawing" style="width: 250px;"/> B</td>
-</tr></table>
-</center>
-
 
 As a string can contain commas within it, CSV files also have escape characters to distinguish between these and those making a boundary between two cells.
 In Python, there exists a `csv` module for reading and writing tabular data in CSV format.
@@ -169,7 +158,7 @@ def delete_row(path_to_file, path_to_new_file):
             if i != 12 and i != 13:
                 writer.writerow(row)
 
-                
+
 path = "data/zodiac.csv"
 new_path = "data/zodiac_updated.csv"
 delete_row(path, new_path)
@@ -402,10 +391,6 @@ JSON stands for **J**ava**S**cript **O**bject **N**otation and was originally de
 
 Many websites and APIs use JSON format for their data. It is therefore highly useful to learn to work with JSON data.
 
-If you open a JSON file in a text editor, like TextEdit, you will see something like this:
-
-
-![JSON file opened in TextEdit](JSON_inTextEdit.png =500x)
 
 The grammar of JSON:
 
@@ -463,7 +448,7 @@ a work/life balance that supports all your needs.
 
 ### Read JSON respons from a link
 
-The webpage [http://ohmanda.com/api/horoscope/](http://ohmanda.com/api/horoscope/) offers daily horoscopes in JSON format. Here is a small code example which receives JSON data on the daily horoscope for aquarius:
+The webpage [http://horoscope-api.herokuapp.com/horoscope/today](http://horoscope-api.herokuapp.com/horoscope/today) offers daily horoscopes in JSON format. Here is a small code example which receives JSON data on the daily horoscope for libra:
 ```
 import json
 from urllib.request import urlopen
@@ -476,7 +461,7 @@ def getTodaysHoroscope(url_to_api):
 url = "http://horoscope-api.herokuapp.com/horoscope/today/Libra"
 receivedJOSONdata = getTodaysHoroscope(url)
 df = pd.json_normalize(receivedJOSONdata)
-df.loc[0][2]
+df.loc[0][1]
 >>>
 
     sign 	date 	horoscope
