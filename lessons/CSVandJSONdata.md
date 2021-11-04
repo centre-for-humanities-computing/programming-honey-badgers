@@ -14,7 +14,7 @@ We will use the libraries: `csv`, `json` and `pandas` for reading, writing and a
 Furthermore, we will make use of `urlopen` from `urllib.request` for accessing JSON data from a Web API.
 
 
-In the end of the lesson there is a coding exercise/challenge. Building on a horoscope progam, the exercise can be used as practice for accessing one type of data and store it in a different format.
+In the end of the lesson there is a coding exercise/challenge. Building on a horoscope program, the exercise can be used as practice for accessing one type of data and store it in a different format.
 
 
 
@@ -24,17 +24,6 @@ A CSV file is a plain text file. CSV stands for 'comma-separated values' indicat
 Each line in the file represents a row in a table and the commas indicate the division into cells.
 
 You might have worked with tables and spreadsheets in Microsoft Excel. You can read a CSV file into Excel but the file itself lacks some of the information you will get from Excel, e.g., value types (everything is a string in a CSV format). However, with CSV files we gain *simplicity*!
-
-Opening a CSV file in a text editor (such as TextEdit) you will see something like figure A. When opening the same CSV file in Excel, Excel adds some formatting to the dates. You will see something like figure B.
-
-<center>
-<table>
-<tr>
-<td> <img src="csv_inTextEditor.png" alt="Drawing" style="width: 250px;"/>
-A</td>
-<td> <img src="csv_inExcel.png" alt="Drawing" style="width: 250px;"/> B</td>
-</tr></table>
-</center>
 
 
 As a string can contain commas within it, CSV files also have escape characters to distinguish between these and those making a boundary between two cells.
@@ -157,7 +146,23 @@ Capricorn,22-12,19-01
 Aquarius,20-01,18-02
 ```
 
+### Deletion of rows
+(this is only a maybe part as it is quite cumbersome to do it with out the pandas library. But to show it might be a good transition to the pandas part)
 
+```
+def delete_row(path_to_file, path_to_new_file):
+    with open(path_to_file) as wrongfile, open(path_to_new_file, 'w') as correctFile:
+        writer = csv.writer(correctFile)
+        reader = csv.reader(wrongfile)
+        for i, row in enumerate(reader):
+            if i != 12 and i != 13:
+                writer.writerow(row)
+
+
+path = "data/zodiac.csv"
+new_path = "data/zodiac_updated.csv"
+delete_row(path, new_path)
+```
 
 ## pandas
 Additional to the `csv` module there are multiple other Python libraries for reading and writing to data sets as well as doing data analysis.
@@ -172,7 +177,7 @@ Additional to the `csv` module there are multiple other Python libraries for rea
 import pandas as pd
 
 list_a = ['aries', 'leo', 'virgo', 2]
-var = pd.Series(list)
+var = pd.Series(list_a)
 print(var)
 
 >>>
@@ -386,10 +391,6 @@ JSON stands for **J**ava**S**cript **O**bject **N**otation and was originally de
 
 Many websites and APIs use JSON format for their data. It is therefore highly useful to learn to work with JSON data.
 
-If you open a JSON file in a text editor, like TextEdit, you will see something like this:
-
-
-![JSON file opened in TextEdit](JSON_inTextEdit.png =500x)
 
 The grammar of JSON:
 
@@ -447,7 +448,7 @@ a work/life balance that supports all your needs.
 
 ### Read JSON respons from a link
 
-The webpage [http://ohmanda.com/api/horoscope/](http://ohmanda.com/api/horoscope/) offers daily horoscopes in JSON format. Here is a small code example which receives JSON data on the daily horoscope for aquarius:
+The webpage [http://horoscope-api.herokuapp.com/horoscope/today](http://horoscope-api.herokuapp.com/horoscope/today) offers daily horoscopes in JSON format. Here is a small code example which receives JSON data on the daily horoscope for libra:
 ```
 import json
 from urllib.request import urlopen
@@ -457,10 +458,10 @@ def getTodaysHoroscope(url_to_api):
     data_json = json.loads(response.read())
     return data_json
 
-url = "http://ohmanda.com/api/horoscope/leo"
+url = "http://horoscope-api.herokuapp.com/horoscope/today/Libra"
 receivedJOSONdata = getTodaysHoroscope(url)
 df = pd.json_normalize(receivedJOSONdata)
-df.loc[0][2]
+df.loc[0][1]
 >>>
 
     sign 	date 	horoscope
@@ -473,11 +474,11 @@ df.loc[0][2]
 Write a program that gives you today's horoscope!
 
 Start writing your "recipe" for what your program should do.
-Add the Python commands afterward.
+Add the Python commands _afterwards_.
 
 
 
-### Ideas
+### Steps
 
 
 1. Write a program that receives today's horoscope for *your* zodiac sign.
@@ -512,8 +513,7 @@ userInput = input("[Message to user]")
 
 5. Is your program robust? Or does it crash if the user input something which is not a zodiac sign?
 
-6. What is the sentiment of the horoscopes?
-* Hint: Featuring Jan!
+
 
 
 .
