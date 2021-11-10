@@ -4,7 +4,9 @@ This is an introduction to Object-Oriented Programming and classes in Python
 
 Learning goals:
 
-* How to create a visualization in Python
+
+* How to create a visualization in Python.
+* Use the `pyplot` module from the `matplotlib library` to create simple visualizations.
 * How to add and modify axis attributes figure objects
 * How to organize several plots into one figure
 
@@ -53,11 +55,10 @@ data  figures ivis
 
 ### Data-Ink Ratio ###
 
-
 <img src="https://render.githubusercontent.com/render/math?math=\text{Data-Ink Ratio}=\Large\frac{\text{Data-Ink}}{\text{Total ink used to print the graphic}}">
 
 
-The Data-Ink ratio is a concept introduced by _Edward Tufte_, the expert whose work has contributed significantly to designing effective data presentations. In his 1983 book, 'The Visual Display of Quantitative Data', he stated the goal:
+The Data-Ink ratio is a concept introduced by [_Edward Tufte_](https://www.edwardtufte.com/tufte/), the expert whose work has contributed significantly to designing effective data presentations. In his 1983 book, 'The Visual Display of Quantitative Data', he stated the goal:
 
 "Above all else show the data"
 (Tufte, 1983)
@@ -97,12 +98,13 @@ We see that the array has 60 objects measured on 40 variables. In this case each
 
 #### Visual inspection of a numpy array ####
 
-Add simple array visualization to `series_visualization.py` and save the files to your `figures` subdirectory
+Add simple array visualization to `series_visualization.py` and save the files to your `figures` subdirectory.
 
 ```py
 import matplotlib.pyplot as plt
 image = plt.imshow(data)
 plt.savefig('figures/my_array.png')
+plt.close()
 ```
 
 And execute. Now you can open you `my_array.png` file and you can inpect the matplotlib object
@@ -112,14 +114,90 @@ $ python -i series_visualization.py
 >>> image
 <matplotlib.image.AxesImage object at 0x7f836fc249b0>
 >>> dir(image)
-['_A', '__class__', '__delattr__', '__dict__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__getstate__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__le__', '__lt__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', '_add_checker', '_agg_filter', '_alpha', '_animated', '_axes', '_check_unsampled_image', '_check_update', '_clipon', '_clippath', '_contains', '_default_contains', '_extent', '_filternorm', '_filterrad', '_get_clipping_extent_bbox', '_get_scalar_alpha', '_gid', '_imcache', '_in_layout', '_interpolation', '_label', '_make_image', '_mouseover', '_oid', '_path_effects', '_picker', '_propobservers', '_rasterized', '_remove_method', '_resample', '_rgbacache', '_scale_norm', '_set_gc_clip', '_sketch', '_snap', '_stale', '_sticky_edges', '_transform', '_transformSet', '_update_dict', '_url', '_visible', 'add_callback', 'add_checker', 'autoscale', 'autoscale_None', 'axes', 'callbacksSM', 'can_composite', 'changed', 'check_update', 'clipbox', 'cmap', 'colorbar', 'contains', 'convert_xunits', 'convert_yunits', 'draw', 'eventson', 'figure', 'findobj', 'format_cursor_data', 'get_agg_filter', 'get_alpha', 'get_animated', 'get_array', 'get_children', 'get_clim', 'get_clip_box', 'get_clip_on', 'get_clip_path', 'get_cmap', 'get_contains', 'get_cursor_data', 'get_extent', 'get_figure', 'get_filternorm', 'get_filterrad', 'get_gid', 'get_in_layout', 'get_interpolation', 'get_label', 'get_path_effects', 'get_picker', 'get_rasterized', 'get_resample', 'get_size', 'get_sketch_params', 'get_snap', 'get_tightbbox', 'get_transform', 'get_transformed_clip_path_and_affine', 'get_url', 'get_visible', 'get_window_extent', 'get_zorder', 'have_units', 'is_transform_set', 'make_image', 'mouseover', 'norm', 'origin', 'pchanged', 'pick', 'pickable', 'properties', 'remove', 'remove_callback', 'set', 'set_agg_filter', 'set_alpha', 'set_animated', 'set_array', 'set_clim', 'set_clip_box', 'set_clip_on', 'set_clip_path', 'set_cmap', 'set_contains', 'set_data', 'set_extent', 'set_figure', 'set_filternorm', 'set_filterrad', 'set_gid', 'set_in_layout', 'set_interpolation', 'set_label', 'set_norm', 'set_path_effects', 'set_picker', 'set_rasterized', 'set_resample', 'set_sketch_params', 'set_snap', 'set_transform', 'set_url', 'set_visible', 'set_zorder', 'stale', 'stale_callback', 'sticky_edges', 'to_rgba', 'update', 'update_dict', 'update_from', 'write_png', 'zorder']
->>> 
+```
+
+Blue pixels in this figure (heat map) represent low values, while yellow pixels represent high values. As you can see, each object (rows) rises and falls over a 40 time unit period (columns).
+
+Let us plot the average intensity pr. time unit.
+
+```py
+ave_value = np.mean(data, axis = 0)
+ave_plot = plt.plot(ave_value)
+plt.savefig('figures/ave_value.png')
+plt.close()
+```
+
+Here we use the `plot()` function, which plots y versus x as lines and/or markers. Since we only supply one array, `plot()` assumes it is the _y_ or second axis variable.
+
+Q: What happens if you do not close the figure?
+
+For more information about `plot()` see [Pyplot tutorial](https://matplotlib.org/stable/tutorials/introductory/pyplot.html).
+
+
+We can continue to calculate and blot descriptive statistics of our data set. Let us start with the maximum daily values - this time a little less verbose.
+
+```py
+max_plot = plt.plot(np.max(data, axis = 0))
+plt.savefig('figures/max_value.png')
+plt.close()
+```
+
+And then the minimum daily values.
+
+```py
+max_plot = plt.plot(np.min(data, axis = 0))
+plt.savefig('figures/min_value.png')
+plt.close()
+```
+
+### Grouping plots ###
+
+`Matplotlib` allows you to group multiple plots in a single figure using subplots. Using `figure()` you can create a canvas to 'draw' your individual plot on. The parameter `figsize` sets the size of the canvas in following the pattern `(width, height)` in inches. We are going to add three plots side by side, so approximately a 3/1 ratio (with an extra inch for y-axis labels). The method `add_subplot()` allow us to add plots to the canvas, it takes three parameters `(nrows, ncols, index)`. We write each subplot to axes variables (`axes1`, `axes2`, `axes3`). With each subplot created, we can modify plot and axis properties using the axes variables. 
+
+Create a new file `group_plots.py` and add.
+
+```py
+import numpy as np
+import matplotlib.pyplot as plt
+
+data = np.loadtxt(fname='data/series-01.csv', delimiter=',')
+
+fig = plt.figure(figsize=(10.0, 3.0))
+
+axes1 = fig.add_subplot(1, 3, 1)
+axes2 = fig.add_subplot(1, 3, 2)
+axes3 = fig.add_subplot(1, 3, 3)
+
+axes1.set_ylabel('average')
+axes1.plot(np.mean(data, axis=0))
+
+axes2.set_ylabel('max')
+axes2.plot(np.max(data, axis=0))
+
+axes3.set_ylabel('min')
+axes3.plot(np.min(data, axis=0))
+
+fig.tight_layout()
+
+plt.savefig('figures/group_plots.png')
+plt.close()
+```
+
+### Visualize multiple files ###
+
+We can use the `glob` library to find all files in a directory that match a pattern.
+
+```sh
+$ python
+>>> import glob
+>>> print(glob.glob('data/series*.csv'))
+['data/series-02.csv', 'data/series-07.csv', 'data/series-11.csv', 'data/series-10.csv', 'data/series-12.csv', 'data/series-03.csv', 'data/series-04.csv', 'data/series-09.csv', 'data/series-06.csv', 'data/series-08.csv', 'data/series-05.csv', 'data/series-01.csv']
 ```
 
 
 
 
-
+Create a new file `multiple_plots.py`
 
 
 
