@@ -47,14 +47,16 @@ if __name__=='__main__':
     print(kln)
 
     kln = Researcher(
-        name='Kristoffer L. Nielbo', 
-        age=44, sex="male", 
-        areas=['culture analytics', 'humanities computing']
+        name='Kristoffer L. Nielbo',
+        age=44,
+        sex="male",
+        areas=['culture analytics', 'humanities computing'],
         )
     print(kln)
-    print(dir(kln))# operator overloading of repr or str in Person
-    print(kln)
-    
+    #print(kln)
+    #print(dir(kln))# operator overloading of repr or str in Person
+    #print(kln)
+    '''
     print(f'{kln.name} is a {kln.sex} specimen of {kln.age} years and earns {kln.pay} squishies')
     kln.giveBonus(1)
     print(kln.pay)
@@ -69,5 +71,5 @@ if __name__=='__main__':
     kln.giveBonus(1)
     print(kln.pay)
     kln.setMood(happy=True)
-
+    '''
     

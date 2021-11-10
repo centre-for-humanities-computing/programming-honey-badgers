@@ -163,7 +163,7 @@ def main():
     # sign-specific
     signs = list(set(df['sign'].values))
     print(signs)
-    """
+    
     idxs = df['sign'] == 'leo'
     texts = df['horoscope-clean'].loc[idxs].values
     wc = word_count(' '.join(texts))
@@ -173,13 +173,15 @@ def main():
     texts = df['horoscope-clean'].loc[idxs].values
     wc = word_count(' '.join(texts))
     virgo100 = list(wc.keys())[:100]
+    
+    print(wc[:25])
 
     iset = intersection(leo100, virgo100)
     print(len(iset))
 
     dset = difference(virgo100, leo100)
     print(dset)
-    """
+    
 
 if __name__=='__main__':
     main()
