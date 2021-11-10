@@ -194,11 +194,45 @@ $ python
 ['data/series-02.csv', 'data/series-07.csv', 'data/series-11.csv', 'data/series-10.csv', 'data/series-12.csv', 'data/series-03.csv', 'data/series-04.csv', 'data/series-09.csv', 'data/series-06.csv', 'data/series-08.csv', 'data/series-05.csv', 'data/series-01.csv']
 ```
 
-
-
+Let us combine a `glob` statement with a `for` loop to visualize multiple files. 
 
 Create a new file `multiple_plots.py`
 
+```py
+import glob
+import numpy as np
+import matplotlib.pyplot as plt
+
+filenames = sorted(glob.glob('data/series*.csv'))
+filenames = filenames[0:3]
+for filename in filenames:
+    print(f'Building plot of {filename}') 
+
+    data = np.loadtxt(fname=filename, delimiter=',')
+
+    fig = plt.figure(figsize=(10.0, 3.0))
+
+    axes1 = fig.add_subplot(1, 3, 1)
+    axes2 = fig.add_subplot(1, 3, 2)
+    axes3 = fig.add_subplot(1, 3, 3)
+
+    axes1.set_ylabel('average')
+    axes1.plot(np.mean(data, axis=0))
+
+    axes2.set_ylabel('max')
+    axes2.plot(np.max(data, axis=0))
+
+    axes3.set_ylabel('min')
+    axes3.plot(np.min(data, axis=0))
+
+    fig.tight_layout()
+    
+    figurename = f"figures/{filename.split('/')[-1].split('.')[0]}.png"
+    print(f'Storing plot as {figurename}\n---')
+
+    plt.savefig(figurename)
+    plt.close()
+```
 
 
 ---
