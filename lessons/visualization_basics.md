@@ -54,7 +54,7 @@ data  figures ivis
 ### Data-Ink Ratio ###
 
 
-<img src="https://render.githubusercontent.com/render/math?math=\text{Data-Ink Ratio}=\Huge\frac{\text{Data-Ink}}{\text{Total ink used to print the graphic}}">
+<img src="https://render.githubusercontent.com/render/math?math=\text{Data-Ink Ratio}=\Large\frac{\text{Data-Ink}}{\text{Total ink used to print the graphic}}">
 
 
 The Data-Ink ratio is a concept introduced by _Edward Tufte_, the expert whose work has contributed significantly to designing effective data presentations. In his 1983 book, 'The Visual Display of Quantitative Data', he stated the goal:
