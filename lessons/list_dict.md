@@ -1,6 +1,6 @@
 # Lists and Dictionaries #
 
-Both lists and dictionaries are used to store collections of data
+  Both lists and dictionaries are used to store collections of data
 
 ## Lists ##
 
@@ -348,4 +348,18 @@ def query_books(books, feature):
         print(f'[INFO] {book}/{feature}: {subdict[feature]}')
 
 query_books(all_books, 'year')
+```
+
+#### Removing entries ####
+
+Delete a book entry with `del` keyword
+
+```py
+del all_books['Neuromancer']
+```
+
+Remove individual feature value, but keep feature key
+
+```py
+all_books['VALIS']['genre'] = None
 ```

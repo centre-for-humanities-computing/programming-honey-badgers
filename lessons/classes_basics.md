@@ -220,3 +220,21 @@ $ python -i point.py
 >>> print(p1.calculate_distance(p1))
 0.0
 ```
+
+## Case study ##
+
+Build simple notebook app.
+
+_Notes_
+
+* note is a short memo
+* records day of production
+* tags for easy querying
+* update notes with new knowledge
+* search note
+
+
+```
+
+
+```

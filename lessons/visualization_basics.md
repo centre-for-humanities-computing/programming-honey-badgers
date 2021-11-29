@@ -42,7 +42,7 @@ data  figures ivis
 
 ## Ten Rules of Visualization ##
 
-1. Know you Audience
+1. Know your Audience
 2. Identify your Message
 3. Adapt the Figure to the Support Medium
 4. Captions are not optional
@@ -134,7 +134,7 @@ Q: What happens if you do not close the figure?
 For more information about `plot()` see [Pyplot tutorial](https://matplotlib.org/stable/tutorials/introductory/pyplot.html).
 
 
-We can continue to calculate and blot descriptive statistics of our data set. Let us start with the maximum daily values - this time a little less verbose.
+We can continue to calculate and plot descriptive statistics of our data set. Let us start with the maximum daily values - this time a little less verbose.
 
 ```py
 max_plot = plt.plot(np.max(data, axis = 0))
@@ -204,7 +204,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 filenames = sorted(glob.glob('data/series*.csv'))
-filenames = filenames[0:3]
+filenames = filenames[0:3]# we only run over three files for efficiency
 for filename in filenames:
     print(f'Building plot of {filename}') 
 
